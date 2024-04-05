@@ -3,6 +3,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { UserState } from "../store/reducers/userSlice";
+import Routes from "../Routes";
 
 const Home = () => {
   const { name } = useSelector<RootState, UserState>((state) => state.user);
