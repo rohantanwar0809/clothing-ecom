@@ -1,12 +1,11 @@
-import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Home from "../screens/Home";
+import React from "react";
+import { useSelector } from "react-redux";
 import ProductDetails from "../screens/ProductDetails";
 import { clothes } from "../static/products";
-import Routes from "./Routes";
-import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { UserState } from "../store/slices/userSlice";
+import Routes from "./Routes";
 
 const Stack = createStackNavigator();
 

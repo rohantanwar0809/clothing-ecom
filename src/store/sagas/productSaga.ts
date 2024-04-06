@@ -10,12 +10,12 @@ import { AxiosResponse } from "axios";
 
 function* fetchProducts(): Generator {
   try {
-    const response = yield call(() => axiosInstance.get(""));
+    const response = yield call(() => axiosInstance.get("clothes"));
+
     const products: Product[] = (response as AxiosResponse<Product[]>).data;
     yield put(fetchProductsSucceeded(products));
   } catch (error) {
     console.log("Error fetching products", error);
-
     if (error instanceof Error) {
       yield put(fetchProductsFailed(error.message));
     } else {

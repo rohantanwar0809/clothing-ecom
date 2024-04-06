@@ -1,5 +1,5 @@
 import "react-native-gesture-handler";
-// import './src/config/debug.ts';
+import "./src/config/debug.ts";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { Provider } from "react-redux";
@@ -11,7 +11,6 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <StackRoutes />
-        {/* <Routes /> */}
       </NavigationContainer>
     </Provider>
   );
