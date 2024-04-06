@@ -1,9 +1,10 @@
-import "react-native-gesture-handler";
-import { NavigationContainer } from "@react-navigation/native";
-import Routes from "./src/Routes";
-import { Provider } from "react-redux";
-import store from "./src/store";
-import StackRoutes from "./src/StackRoutes";
+import 'react-native-gesture-handler';
+// import './src/config/debug.ts';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { Provider } from 'react-redux';
+import StackRoutes from './src/routes/StackRoutes';
+import store from './src/app/store';
 
 export default function App() {
   return (
