@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { ProductsState } from '../../types';
+import { createSlice } from "@reduxjs/toolkit";
+import { ProductsState } from "../../../types";
 
 const initialState: ProductsState = {
   products: [],
@@ -8,7 +8,7 @@ const initialState: ProductsState = {
 };
 
 const productSlice = createSlice({
-  name: 'products',
+  name: "products",
   initialState,
   reducers: {
     fetchProductsRequested: (state) => {
@@ -24,5 +24,11 @@ const productSlice = createSlice({
     },
   },
 });
+
+export const {
+  fetchProductsRequested,
+  fetchProductsSucceeded,
+  fetchProductsFailed,
+} = productSlice.actions;
 
 export default productSlice.reducer;

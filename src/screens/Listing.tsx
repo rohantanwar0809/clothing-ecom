@@ -1,22 +1,22 @@
-import { View, FlatList } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import ListingCard from '../components/ListingCard';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchProductsRequested } from '../app/actions/productActions';
-import { RootState } from '../app/store';
-import { Product } from '../types';
-import { Text } from 'react-native';
-import SkeletonContainerComponent from '../components/SkeletonContainerComponent';
+import { View, FlatList } from "react-native";
+import React, { useEffect, useState } from "react";
+import ListingCard from "../components/ListingCard";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProductsRequested } from "../app/store/slices/productSlice";
+import { RootState } from "../app/store";
+import { Product } from "../types";
+import { Text } from "react-native";
+import SkeletonContainerComponent from "../components/SkeletonContainerComponent";
 
 const Listing = () => {
   const products: Product[] = useSelector(
-    (state: RootState) => state.products.products,
+    (state: RootState) => state.products.products
   );
   const loading: boolean = useSelector(
-    (state: RootState) => state.products.loading,
+    (state: RootState) => state.products.loading
   );
   const error: string | null = useSelector(
-    (state: RootState) => state.products.error,
+    (state: RootState) => state.products.error
   );
 
   const dispatch = useDispatch();
@@ -25,11 +25,11 @@ const Listing = () => {
     dispatch(fetchProductsRequested());
   }, []);
   return (
-    <View className='w-screen h-screen bg-white items-center justify-center p-2'>
+    <View className="w-screen h-screen bg-white items-center justify-center p-2">
       {loading && <SkeletonContainerComponent />}
       {error && <Text>Error: {error}</Text>}
       {products.length === 0 && (
-        <View className=' shadow-md'>
+        <View className=" shadow-md">
           <FlatList
             data={products}
             numColumns={2}
@@ -38,7 +38,7 @@ const Listing = () => {
               padding: 2,
             }}
             columnWrapperStyle={{
-              justifyContent: 'space-between',
+              justifyContent: "space-between",
               gap: 10,
               marginVertical: 10,
             }}
@@ -60,9 +60,6 @@ const Listing = () => {
           />
         </View>
       )}
-      {/* <Text>Fetched Products: {JSON.stringify(products, null, 2)}</Text> */}
-      {/*<Text>Fetched Products: {JSON.stringify(loading, null, 2)}</Text>
-      <Text>Fetched Products: {JSON.stringify(error, null, 2)}</Text> */}
     </View>
   );
 };
