@@ -1,9 +1,8 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import Home from "./screens/Home";
-import ProductDetails from "./screens/ProductDetails";
-import { clothes } from "./static/products";
-import Routes from "./Routes";
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import ProductDetails from '../screens/ProductDetails';
+import { clothes } from '../static/products';
+import Routes from './Routes';
 
 const Stack = createStackNavigator();
 
@@ -11,15 +10,15 @@ function StackRoutes() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Main"
+        name='Main'
         component={Routes}
         options={{
           headerShown: false,
-          headerTitle: "Back",
+          headerTitle: 'Back',
         }}
       />
       <Stack.Screen
-        name="ProductDetails"
+        name='ProductDetails'
         children={() => <ProductDetails product={clothes[1]} />}
         options={{
           headerTitle: clothes[1].title,
