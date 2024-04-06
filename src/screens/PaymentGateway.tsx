@@ -1,117 +1,12 @@
-// import { View, Text, TextInput, StyleSheet } from 'react-native';
-// import React, { useState } from 'react';
-// import { useNavigation } from '@react-navigation/native';
-// import CustomButton from '../components/CustomButton';
-
-// const PaymentGateway = () => {
-//   const [cardNumber, setCardNumber] = useState('');
-//   const [expiry, setExpiry] = useState('');
-//   const [cvv, setCvv] = useState('');
-//   const navigation = useNavigation();
-
-//   const handlePayment = () => {
-//     alert('Payment Successful! Your order is confirmed.');
-//     // navigation.navigate('Listing' as never); // Go back to Cart Screen
-//     navigation.goBack();
-//   };
-
-//   const handleCardNumberChange = (text: string) => {
-//     const formattedCardNumber = text.slice(0, 16).replace(/\D/g, '');
-//     setCardNumber(formattedCardNumber);
-//   };
-
-//   // const handleExpiryChange = (text: string) => {
-//   //   const formattedExpiry = text.slice(0, 5); // Limit to 5 characters
-//   //   // Automatically add '/' after 2nd character if missing
-//   //   if (formattedExpiry.length === 2 && formattedExpiry.indexOf('/') === -1) {
-//   //     setExpiry(formattedExpiry + '/');
-//   //   } else {
-//   //     setExpiry(formattedExpiry.replace(/\D/g, '')); // Remove non-numeric characters
-//   //   }
-//   // };
-
-//   return (
-//     <View style={styles.paymentContainer}>
-//       <Text style={styles.paymentTitle}>Enter Payment Details</Text>
-//       <TextInput
-//         value={cardNumber}
-//         onChangeText={handleCardNumberChange}
-//         placeholder='Card Number'
-//         style={styles.paymentInput}
-//         keyboardType='numeric'
-//       />
-//       <View style={styles.expiryCvvRow}>
-//         <TextInput
-//           value={expiry}
-//           onChangeText={setExpiry}
-//           placeholder='Expiry (MM-YY)'
-//           style={[styles.paymentInput, styles.expiryInput]}
-//           keyboardType='numeric'
-//         />
-//         <TextInput
-//           value={cvv}
-//           onChangeText={setCvv}
-//           placeholder='CVV'
-//           style={[styles.paymentInput, styles.cvvInput]}
-//           keyboardType='numeric'
-//         />
-//       </View>
-//       <CustomButton
-//         title='Pay Now'
-//         style={styles.paymentButton}
-//         onPress={handlePayment}
-//       />
-//     </View>
-//   );
-// };
-
-// export default PaymentGateway;
-
-// const styles = StyleSheet.create({
-//   paymentContainer: {
-//     flex: 1,
-//     padding: 20,
-//     backgroundColor: '#fff',
-//   },
-//   paymentTitle: {
-//     fontSize: 20,
-//     fontWeight: 'bold',
-//     marginBottom: 20,
-//   },
-//   paymentInput: {
-//     padding: 10,
-//     borderWidth: 1,
-//     borderColor: '#ccc',
-//     marginBottom: 10,
-//   },
-//   expiryCvvRow: {
-//     flexDirection: 'row',
-//     justifyContent: 'space-between',
-//   },
-//   expiryInput: {
-//     width: '45%',
-//   },
-//   cvvInput: {
-//     width: '45%',
-//   },
-//   paymentButton: {
-//     marginTop: 20,
-//   },
-// });
-
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
-  Alert,
   StyleSheet,
   KeyboardAvoidingView,
   Platform,
-  SafeAreaView,
   View,
   Text,
   TextInput,
-  Modal,
 } from 'react-native';
-// import CreditCardForm, { Button, FormModel } from 'rn-credit-card';
 
 import {
   CardDateTextInput,
@@ -123,66 +18,6 @@ import { useNavigation } from '@react-navigation/native';
 import PaymentSuccess from '../components/PaymentSuccess';
 import { useDispatch } from 'react-redux';
 import { clearCart } from '../app/slices/cartSlice';
-
-// const PaymentGateway = () => {
-//   const formMethods = useForm<FormModel>({
-//     // to trigger the validation on the blur event
-//     mode: 'onBlur',
-//     defaultValues: {
-//       holderName: '',
-//       cardNumber: '',
-//       expiration: '',
-//       cvv: '',
-//     },
-//   });
-//   const { handleSubmit, formState } = formMethods;
-
-//   function onSubmit(model: FormModel) {
-//     Alert.alert('Success: ' + JSON.stringify(model, null, 2));
-//   }
-
-//   return (
-//     <FormProvider {...formMethods}>
-//       <SafeAreaView style={styles.container}>
-//         <KeyboardAvoidingView
-//           style={styles.avoider}
-//           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-//         >
-//           <CreditCardForm
-//             LottieView={LottieView}
-//             horizontalStart
-//             overrides={{
-//               labelText: {
-//                 marginTop: 16,
-//               },
-//             }}
-//           />
-//         </KeyboardAvoidingView>
-//         {formState.isValid && (
-//           <Button
-//             style={styles.button}
-//             title={'CONFIRM PAYMENT'}
-//             onPress={handleSubmit(onSubmit)}
-//           />
-//         )}
-//       </SafeAreaView>
-//     </FormProvider>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//   },
-//   avoider: {
-//     flex: 1,
-//     padding: 36,
-//   },
-//   button: {
-//     margin: 36,
-//     marginTop: 0,
-//   },
-// });
 
 const PaymentGateway = () => {
   const [isConfettiVisible, setIsConfettiVisible] = useState(false);
