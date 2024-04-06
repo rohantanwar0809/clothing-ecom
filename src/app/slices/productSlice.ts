@@ -5,6 +5,19 @@ const initialState: ProductsState = {
   products: [],
   loading: false,
   error: null,
+  selectedProduct: {
+    id: 1,
+    title: '',
+    displayTitle: '',
+    price: 0,
+    description: '',
+    category: '',
+    image: '',
+    rating: {
+      rate: 0,
+      count: 0,
+    },
+  },
 };
 
 const productSlice = createSlice({
@@ -22,7 +35,16 @@ const productSlice = createSlice({
       state.loading = false;
       state.error = action.payload; // Optional: Set error message
     },
+    selectProduct: (state, action) => {
+      state.selectedProduct = action.payload;
+    },
   },
 });
 
+export const {
+  fetchProductsFailed,
+  fetchProductsRequested,
+  fetchProductsSucceeded,
+  selectProduct,
+} = productSlice.actions;
 export default productSlice.reducer;

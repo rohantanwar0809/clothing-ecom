@@ -48,7 +48,7 @@ function Routes() {
   );
 }
 
-function CheckoutStackScreen() {
+export function CheckoutStackScreen() {
   return (
     <CheckoutStack.Navigator>
       <CheckoutStack.Screen

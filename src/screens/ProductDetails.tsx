@@ -1,17 +1,28 @@
-import { View, Text, Image, ScrollView, Button } from 'react-native';
+import { View, Text, Image, ScrollView } from 'react-native';
 import React from 'react';
 import { formatPrice } from '../utils';
-import MyButton from '../components/CustomButton1';
-import { Product } from '../types';
+import CustomButton from '../components/CustomButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { cartItemsSelector, chosenItemSelector } from '../app/selectors';
+import { addItemToCart } from '../app/slices/cartSlice';
+import { useNavigation } from '@react-navigation/native';
+import QuantityInput from '../components/QuantityInput';
 
-interface ProductDetailsProps {
-  product: Product;
-}
+const ProductDetails = () => {
+  const chosenItem = useSelector(chosenItemSelector);
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
 
-const ProductDetails: React.FC<ProductDetailsProps> = (props) => {
-  const { id, title, price, description, category, image, rating } =
-    props.product;
-  console.log(props);
+  const cartItems = useSelector(cartItemsSelector);
+  const existingItemIndex = cartItems.findIndex(
+    (cartItem) => cartItem.id === chosenItem.id,
+  );
+
+  const handleAddToCart = () => {
+    dispatch(addItemToCart(chosenItem)); // Dispatch action with the product object
+  };
+
+  const { title, price, description, category, image } = chosenItem;
   return (
     <ScrollView className='w-screen h-screen flex-1 bg-white'>
       <View className=' items-center justify-center p-2 '>
@@ -35,20 +46,27 @@ const ProductDetails: React.FC<ProductDetailsProps> = (props) => {
                 ))}
               </View>
             </View>
-            <View className='mt-4'>
+            <View className='w-full mt-4 flex flex-row'>
               <Text className='text-lg font-semibold'>
                 Price: {formatPrice(price)}
               </Text>
+              {/* <QuantityInput /> */}
             </View>
           </View>
           <View className='flex flex-row justify-between'>
-            <MyButton
+            <CustomButton
               title='Add To Bag'
               buttonType='outline'
               textColor='text-black'
               buttonSize='md'
+              onPress={handleAddToCart}
+              disabled={existingItemIndex !== -1}
             />
-            <MyButton buttonSize='md' title='Proceed To Bag' />
+            <CustomButton
+              buttonSize='md'
+              title='Proceed To Bag'
+              onPress={() => navigation.navigate('Bag' as never)}
+            />
           </View>
         </View>
       </View>

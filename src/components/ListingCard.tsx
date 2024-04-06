@@ -1,31 +1,30 @@
 import React from 'react';
 import {
-  View,
   Text,
   Image,
-  ImageSourcePropType,
   TouchableOpacity,
+  TouchableOpacityProps,
 } from 'react-native';
 import { formatPrice } from '../utils';
-import { useNavigation } from '@react-navigation/native';
 
-interface ListingCardProps {
+interface ListingCardProps extends TouchableOpacityProps {
   image: string;
   title: string;
   price: number;
 }
 
-const ListingCard: React.FC<ListingCardProps> = (props) => {
-  const { image, title, price } = props;
-  const navigation = useNavigation();
+const ListingCard: React.FC<ListingCardProps> = ({
+  image,
+  title,
+  price,
+  ...rest
+}) => {
   return (
     <TouchableOpacity
       className='rounded-lg w-[50%] p-2
         bg-white shadow-md 
       '
-      onPress={() => {
-        navigation.navigate('ProductDetails' as never);
-      }}
+      {...rest}
     >
       <Image
         source={{

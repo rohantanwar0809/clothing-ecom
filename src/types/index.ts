@@ -12,10 +12,19 @@ interface Product {
   };
 }
 
+interface CartItemsProps extends Product {
+  uniqueId: string;
+}
+
 interface ProductsState {
   products: Product[];
   loading: boolean;
   error: string | null;
+  selectedProduct: Product;
 }
 
-export { Product, ProductsState };
+interface CartState {
+  cartItems: CartItemsProps[];
+}
+
+export { Product, ProductsState, CartState };

@@ -1,114 +1,58 @@
-import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  Image,
-  Button,
-  StyleSheet,
-  ScrollView,
-} from 'react-native';
-import CustomButton from '../components/CustomButton';
+import React from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { formatPrice, getPricesForCart } from '../utils';
+import CustomButton from '../components/CustomButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { cartItemsSelector } from '../app/selectors';
+import { removeItemFromCart } from '../app/slices/cartSlice';
+import { Product } from '../types';
+import CartItem from '../components/CartItem';
+import EmptyCartComponent from '../components/EmptyCartComponent';
 
-import { formatPrice } from '../utils';
-import { clothes } from '../static/products';
-import { PRODUCTS } from '../../dbs';
-
-interface Product {
-  id: number;
-  imageUrl: string;
-  title: string;
-  description?: string;
-  rating?: number;
-  price: number; // Assuming a price property for subtotal calculation
-}
-
-interface CartItemProps {
-  product: Product;
-  products: Product[];
-  onRemove: (product: Product) => void;
-}
-
-const CartItem: React.FC<CartItemProps> = ({ product, onRemove, products }) => {
-  const productExists = products.find((item) => item.id === product.id);
-  if (!productExists) {
-    return null; // Don't render if product is removed
-  }
-  return (
-    <View style={styles.cartItem}>
-      <Image source={{ uri: product.imageUrl }} style={styles.productImage} />
-      <View style={styles.productDetails}>
-        <Text style={styles.productTitle}>{product.title}</Text>
-        <Text style={styles.productPrice}>Price: ₹{product.price}</Text>
-        {/* {product.description && (
-        <Text style={styles.productDescription}>{product.description}</Text>
-      )} */}
-
-        {product.rating && (
-          <Text style={styles.productRating}>Rating: {product.rating}</Text>
-        )}
-      </View>
-      <Button title='Remove' onPress={() => onRemove(product)} />
-    </View>
-  );
-};
-
-interface CartScreenProps {
-  products: Product[];
-}
-
-// Prop: products
 const Checkout = () => {
-  // const products = PRODUCTS;
-  const [products, setProducts] = useState<Product[]>(PRODUCTS);
+  const cartItems = useSelector(cartItemsSelector);
+  const dispatch = useDispatch();
   const navigation = useNavigation();
-  const calculateSubtotal = () => {
-    let subtotal = 0;
-    products.forEach((product) => (subtotal += product.price));
-    return subtotal;
-  };
 
-  const calculateGST = () => {
-    return calculateSubtotal() * 0.18;
-  };
+  const { calculateGST, calculateSubtotal, totalPrice } =
+    getPricesForCart(cartItems);
 
-  const totalPrice = calculateSubtotal() + calculateGST();
-
-  const onRemove = (productToRemove: Product): void => {
-    const updatedProducts = products.filter(
-      (product) => product.id !== productToRemove.id,
-    );
-    setProducts(updatedProducts);
+  const handleRemove = (productToRemove: Product) => {
+    dispatch(removeItemFromCart(productToRemove));
   };
 
   return (
     <View style={styles.container}>
       <ScrollView>
-        {products.map((product) => (
+        {cartItems.map((cartItem) => (
           <CartItem
-            key={product.id}
-            product={product}
-            products={products}
-            onRemove={onRemove}
+            key={cartItem.uniqueId}
+            cartItem={cartItem}
+            cartItems={cartItems}
+            onRemove={() => handleRemove(cartItem)}
           />
         ))}
       </ScrollView>
-      <View style={styles.orderSummary}>
-        <Text style={styles.summaryText}>
-          Subtotal: {formatPrice(calculateSubtotal())}
-        </Text>
-        <Text style={styles.summaryText}>
-          GST (18%): {formatPrice(calculateGST())}
-        </Text>
-        <Text style={styles.summaryText}>
-          Total Price: {formatPrice(totalPrice)}
-        </Text>
-        <CustomButton
-          title='Place Order'
-          style={styles.orderButton}
-          onPress={() => navigation.navigate('PaymentGateway' as never)}
+      {cartItems.length === 0 ? (
+        <EmptyCartComponent
+          onPress={() => navigation.navigate('Listing' as never)}
         />
-      </View>
+      ) : (
+        <View style={styles.orderSummary}>
+          <Text style={styles.summaryText}>
+            Subtotal: {formatPrice(calculateSubtotal())}
+          </Text>
+          <Text style={styles.summaryText}>
+            GST (18%): {formatPrice(calculateGST())}
+          </Text>
+          <Text style={styles.summaryText}>Total Price: {totalPrice}</Text>
+          <CustomButton
+            title='Place Order'
+            onPress={() => navigation.navigate('PaymentGateway' as never)}
+          />
+        </View>
+      )}
     </View>
   );
 };
@@ -119,6 +63,7 @@ const styles = StyleSheet.create({
   },
   cartItem: {
     flexDirection: 'row',
+    alignItems: 'center',
     padding: 10,
     margin: 5,
     backgroundColor: '#f5f5f5',
@@ -136,9 +81,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-  productDescription: {
-    fontSize: 14,
-  },
+
   productRating: {
     fontSize: 12,
     color: 'blue',

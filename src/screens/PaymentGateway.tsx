@@ -99,7 +99,7 @@
 //   },
 // });
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Alert,
   StyleSheet,
@@ -109,14 +109,20 @@ import {
   View,
   Text,
   TextInput,
+  Modal,
 } from 'react-native';
 // import CreditCardForm, { Button, FormModel } from 'rn-credit-card';
+
 import {
   CardDateTextInput,
   CardNumberTextInput,
 } from 'rn-credit-card-textinput';
-import MyButton from '../components/CustomButton1';
+import CustomButton from '../components/CustomButton';
 import { validateExpiryDate } from '../validators';
+import { useNavigation } from '@react-navigation/native';
+import PaymentSuccess from '../components/PaymentSuccess';
+import { useDispatch } from 'react-redux';
+import { clearCart } from '../app/slices/cartSlice';
 
 // const PaymentGateway = () => {
 //   const formMethods = useForm<FormModel>({
@@ -179,6 +185,8 @@ import { validateExpiryDate } from '../validators';
 // });
 
 const PaymentGateway = () => {
+  const [isConfettiVisible, setIsConfettiVisible] = useState(false);
+
   const [cardValue, setCardValue] = useState('');
   const [focusCardNum, setFocusCardNum] = useState<boolean>(false);
 
@@ -186,6 +194,9 @@ const PaymentGateway = () => {
   const [focusCardDateNum, setFocusCardDateNum] = useState<boolean>(false);
 
   const [CVVValue, setCVVValue] = useState('');
+
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const updateText = (cardNum: string) => {
     setCardValue(cardNum);
@@ -206,7 +217,14 @@ const PaymentGateway = () => {
     );
   }
 
-  return (
+  const handlePayment = () => {
+    dispatch(clearCart());
+    setIsConfettiVisible(true);
+  };
+
+  return isConfettiVisible ? (
+    <PaymentSuccess onPress={() => navigation.goBack()} />
+  ) : (
     <View style={styles.container}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -282,7 +300,11 @@ const PaymentGateway = () => {
             />
           </View>
         </View>
-        <MyButton title='Pay Now' disabled={!validatePayment()} />
+        <CustomButton
+          title='Pay Now'
+          disabled={!validatePayment()}
+          onPress={handlePayment}
+        />
       </KeyboardAvoidingView>
     </View>
   );

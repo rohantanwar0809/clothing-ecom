@@ -1,0 +1,277 @@
+{
+  "clothes": [
+    {
+      "id": 1,
+      "title": "Tremblay Men's Cotton Polo Shirt",
+      "displayTitle": "Tremblay Polo Shirt",
+      "price": 17.99,
+      "description": "This classic polo shirt is made from 100% soft cotton for a comfortable and breathable fit. It features a ribbed collar and cuffs, a two-button placket, and a clean chest design. Perfect for casual wear or layering.",
+      "category": "women's clothing",
+      "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
+      "rating": {
+        "rate": 4.2,
+        "count": 156
+      }
+    },
+    {
+      "id": 2,
+      "title": "Freret Women's Slim-Fit Jeans",
+      "displayTitle": "Freret Jeans",
+      "price": 39.95,
+      "description": "These high-waisted slim-fit jeans are made from a comfortable stretch denim that flatters your figure. They feature a classic five-pocket design and a clean, finished hem. Perfect for everyday wear or dressing up for a night out.",
+      "category": "women's clothing",
+      "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+      "rating": {
+        "rate": 4.8,
+        "count": 890
+      }
+    },
+    {
+      "id": 3,
+      "title": "Racine Women's Fuzzy Cable Knit Sweater",
+      "displayTitle": "Racine Sweater",
+      "price": 42.5,
+      "description": "This cozy cable knit sweater is made from a soft and fuzzy yarn that will keep you warm all winter long. It features a relaxed fit, a crew neckline, and long sleeves. Perfect for layering or wearing on its own.",
+      "category": "women's clothing",
+      "image": "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
+      "rating": {
+        "rate": 3.9,
+        "count": 423
+      }
+    },
+    {
+      "id": 4,
+      "title": "Lanctot Men's Casual Button-Down Shirt",
+      "displayTitle": "Lanctot Shirt",
+      "price": 25.99,
+      "description": "This versatile button-down shirt is made from a lightweight cotton blend that is perfect for year-round wear. It features a classic fit, a spread collar, and a single chest pocket. Perfect for dressing up or down.",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+      "rating": {
+        "rate": 4.5,
+        "count": 312
+      }
+    },
+    {
+      "id": 5,
+      "title": "Cadotte Women's Faux Leather Tote Bag",
+      "displayTitle": "Cadotte Leather Bag",
+      "price": 59.99,
+      "description": "This stylish tote bag is made from a soft and durable faux leather that looks and feels like the real thing. It features a spacious main compartment, two interior slip pockets, and a zippered closure. Perfect for carrying all of your essentials.",
+      "category": "women's clothing",
+      "image": "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg",
+      "rating": {
+        "rate": 4.1,
+        "count": 123
+      }
+    },
+    {
+      "id": 6,
+      "title": "Desjardins Men's Leather Watch",
+      "displayTitle": "Desjardins Watch",
+      "price": 84.95,
+      "description": "This classic leather watch features a genuine leather strap and a stainless steel case. The quartz movement ensures accurate timekeeping, and the water-resistant design makes it perfect for everyday wear.",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
+      "rating": {
+        "rate": 4.7,
+        "count": 678
+      }
+    },
+    {
+      "id": 8,
+      "title": "Côté Gourmet Coffee Beans",
+      "displayTitle": "Côté Beans",
+      "price": 14.99,
+      "description": "These whole bean coffee beans are sourced from the finest coffee-growing regions around the world. They are roasted to perfection to create a rich and flavorful cup of coffee. Perfect for starting your day off right.",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+      "rating": {
+        "rate": 4.3,
+        "count": 987
+      }
+    },
+    {
+      "id": 9,
+      "title": "Lévesque Noise-Canceling Headphones",
+      "displayTitle": "Lévesque Headphones",
+      "price": 129.99,
+      "description": "These wireless noise-canceling headphones feature active noise cancellation technology to block out unwanted ambient noise. They also offer superior sound quality and long battery life. Perfect for travel, work, or simply enjoying your music.",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+      "rating": {
+        "rate": 4.0,
+        "count": 542
+      }
+    },
+    {
+      "id": 10,
+      "title": "Bouchard Smart Home Speaker",
+      "displayTitle": "Bouchard Speaker",
+      "price": 74.99,
+      "description": "This smart home speaker features a sleek and compact design. It integrates seamlessly with your existing smart home devices and allows you to control them with your voice. Perfect for listening to music, making calls, or controlling your lights and thermostat.",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
+      "rating": {
+        "rate": 3.8,
+        "count": 218
+      }
+    },
+    {
+      "id": 11,
+      "title": "Tremblay VR Headset",
+      "displayTitle": "Tremblay Headset",
+      "price": 399.99,
+      "description": "This virtual reality headset offers a truly immersive gaming experience. It features high-resolution displays, a comfortable design, and a wide range of compatible games and experiences. Perfect for gamers and anyone who wants to explore the world of virtual reality.",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+      "rating": {
+        "rate": 4.6,
+        "count": 147
+      }
+    },
+    {
+      "id": 12,
+      "title": "Forest Portable Camping Stove",
+      "displayTitle": "Forest Stove",
+      "price": 49.99,
+      "description": "This portable camping stove is compact and lightweight, making it perfect for backpacking and camping trips. It features a powerful burner that can boil water quickly and efficiently. Perfect for cooking meals outdoors.",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
+      "rating": {
+        "rate": 4.4,
+        "count": 752
+      }
+    },
+    {
+      "id": 13,
+      "title": "Landry Men's Chinos",
+      "displayTitle": "Landry Chinos",
+      "price": 34.99,
+      "description": "These classic chinos are made from a comfortable and wrinkle-resistant cotton blend. They feature a slim fit, a flat front, and a hidden zip fly. Perfect for work, casual wear, or travel.",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+      "rating": {
+        "rate": 4.1,
+        "count": 289
+      }
+    },
+    {
+      "id": 14,
+      "title": "Morin Women's Silk Slip Dress",
+      "displayTitle": "Morin Dress",
+      "price": 74.5,
+      "description": "This elegant slip dress is made from a luxurious and lightweight silk fabric. It features a flattering bias cut, a spaghetti strap design, and a midi length. Perfect for layering or wearing on its own for a special occasion.",
+      "category": "women's clothing",
+      "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+      "rating": {
+        "rate": 4.8,
+        "count": 347
+      }
+    },
+    {
+      "id": 15,
+      "title": "Bouchard Men's Bomber Jacket",
+      "displayTitle": "Bouchard Jacket",
+      "price": 69.99,
+      "description": "This stylish bomber jacket is made from a durable and water-resistant fabric. It features a relaxed fit, a ribbed collar, cuffs, and hem, and multiple pockets for storage. Perfect for layering or wearing on its own for a casual look.",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+      "rating": {
+        "rate": 3.7,
+        "count": 514
+      }
+    },
+    {
+      "id": 16,
+      "title": "Morin Women's Cashmere Sweater",
+      "displayTitle": "Cashmere Sweater",
+      "price": 129.99,
+      "description": "This luxurious cashmere sweater is made from the finest quality materials. It features a soft and cozy feel, a relaxed fit, and a crew neckline. Perfect for layering or wearing on its own for a sophisticated look.",
+      "category": "women's clothing",
+      "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
+      "rating": {
+        "rate": 4.9,
+        "count": 172
+      }
+    },
+    {
+      "id": 17,
+      "title": "Landry Men's Henley Shirt",
+      "displayTitle": "Henley Shirt",
+      "price": 22.99,
+      "description": "This classic henley shirt is made from a soft and comfortable cotton blend. It features a relaxed fit, a button placket at the neckline, and short sleeves. Perfect for casual wear or layering.",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
+      "rating": {
+        "rate": 4.3,
+        "count": 621
+      }
+    },
+    {
+      "id": 18,
+      "title": "Richard Women's High-Waisted Leggings",
+      "displayTitle": "Richard Leggings",
+      "price": 29.99,
+      "description": "These high-waisted leggings are made from a soft and stretchy fabric that will hug your curves in all the right places. They feature a comfortable high-rise waist and a sleek, ankle-length silhouette. Perfect for working out, running errands, or lounging at home.",
+      "category": "women's clothing",
+      "image": "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
+      "rating": {
+        "rate": 4.6,
+        "count": 873
+      }
+    },
+    {
+      "id": 19,
+      "title": "Desjardins Men's Slim-Fit Dress Pants",
+      "displayTitle": "Desjardins Pants",
+      "price": 45.99,
+      "description": "These slim-fit dress pants are made from a wrinkle-resistant fabric that is perfect for work or formal occasions. They feature a classic fit, a flat front, and a defined crease down the leg. Perfect for pairing with a dress shirt and tie for a polished look.",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+      "rating": {
+        "rate": 4.2,
+        "count": 492
+      }
+    },
+    {
+      "id": 20,
+      "title": "Morin Women's Denim Jacket",
+      "displayTitle": "Denim Jacket",
+      "price": 54.99,
+      "description": "This classic denim jacket is a wardrobe essential. It features a relaxed fit, a button-up front, and multiple pockets for storage. Perfect for layering over a dress or pairing with jeans for a casual look.",
+      "category": "women's clothing",
+      "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
+      "rating": {
+        "rate": 4.7,
+        "count": 384
+      }
+    },
+    {
+      "id": 21,
+      "title": "Landry Men's T-Shirt",
+      "displayTitle": "Landry T-Shirt",
+      "price": 14.99,
+      "description": "This classic crewneck t-shirt is made from a soft and comfortable cotton blend. It features a relaxed fit and a ribbed neckline. Perfect for everyday wear or layering.",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+      "rating": {
+        "rate": 4.0,
+        "count": 1025
+      }
+    },
+    {
+      "id": 22,
+      "title": "Richard Women's Puff-Sleeve Blouse",
+      "displayTitle": "Richard Blouse",
+      "price": 39.99,
+      "description": "This feminine puff-sleeve blouse is a trendy addition to any wardrobe. It features a relaxed fit, a ruffled neckline, and puff sleeves with elastic cuffs. Perfect for pairing with jeans or a skirt for a stylish look.",
+      "category": "women's clothing",
+      "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
+      "rating": {
+        "rate": 4.4,
+        "count": 618
+      }
+    }
+  ]
+}
