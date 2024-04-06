@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ProductsState } from "../../../types";
+import { ProductsState } from "../../types";
 
 const initialState: ProductsState = {
   products: [],
@@ -15,7 +15,7 @@ const productSlice = createSlice({
       state.loading = true;
     },
     fetchProductsSucceeded: (state, action) => {
-      state.products = action.payload.clothes;
+      state.products = action.payload;
       state.loading = false;
     },
     fetchProductsFailed: (state, action) => {

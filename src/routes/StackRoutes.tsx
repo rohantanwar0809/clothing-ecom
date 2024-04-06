@@ -1,27 +1,35 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import ProductDetails from '../screens/ProductDetails';
-import { clothes } from '../static/products';
-import Routes from './Routes';
+import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
+import { useSelector } from "react-redux";
+import ProductDetails from "../screens/ProductDetails";
+import { clothes } from "../static/products";
+import { RootState } from "../store";
+import { UserState } from "../store/slices/userSlice";
+import Routes from "./Routes";
 
 const Stack = createStackNavigator();
 
 function StackRoutes() {
+  const { currentViewingProduct } = useSelector<RootState, UserState>(
+    (state) => state.user
+  );
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name='Main'
+        name="Main"
         component={Routes}
         options={{
           headerShown: false,
-          headerTitle: 'Back',
+          headerTitle: "Back",
         }}
       />
       <Stack.Screen
-        name='ProductDetails'
-        children={() => <ProductDetails product={clothes[1]} />}
+        name="ProductDetails"
+        children={() => (
+          <ProductDetails product={currentViewingProduct ?? clothes[1]} />
+        )}
         options={{
-          headerTitle: clothes[1].title,
+          headerTitle: currentViewingProduct?.title,
         }}
       />
     </Stack.Navigator>
