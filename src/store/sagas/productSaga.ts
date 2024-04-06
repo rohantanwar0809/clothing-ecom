@@ -1,11 +1,11 @@
 import { takeEvery, put, call } from "redux-saga/effects";
-import { axiosInstance } from "../../../utils/http";
+import { axiosInstance } from "../../utils/http";
 import {
   fetchProductsRequested,
   fetchProductsSucceeded,
   fetchProductsFailed,
 } from "../slices/productSlice";
-import { Product } from "../../../types";
+import { Product } from "../../types";
 import { AxiosResponse } from "axios";
 
 function* fetchProducts(): Generator {
