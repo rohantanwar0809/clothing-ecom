@@ -26,7 +26,7 @@ const CustomButton = ({
     <TouchableOpacity
       {...rest}
       className={`${btnType} ${
-        disabled ? 'bg-gray-200' : undefined
+        disabled ? 'bg-gray-200' : ''
       } ${buttonWidth} mt-5 py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500`}
     >
       <Text className={`${textColor} text-lg font-bold text-center`}>

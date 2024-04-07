@@ -1,19 +1,19 @@
-import { View, FlatList } from 'react-native';
+import { View, FlatList, Text } from 'react-native';
 import React, { useEffect } from 'react';
-import ListingCard from '../components/ListingCard';
+import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { Text } from 'react-native';
+
+import ListingCard from '../components/ListingCard';
 import SkeletonContainerComponent from '../components/SkeletonContainerComponent';
 import {
   loadingErrorSelector,
   productsLoadingSelector,
   productsSelector,
-} from '../app/selectors';
-import { useNavigation } from '@react-navigation/native';
+} from '../store/selectors';
 import {
   fetchProductsRequested,
   selectProduct,
-} from '../app/slices/productSlice';
+} from '../store/slices/productSlice';
 
 const Listing = () => {
   const products = useSelector(productsSelector);
@@ -59,6 +59,7 @@ const Listing = () => {
                 }}
               />
             )}
+            // [TODO: LAZY LOADING ITEMS]
             // onEndReachedThreshold={0.5}
             // onEndReached={() => {
             //   setProductsData((prev) => [

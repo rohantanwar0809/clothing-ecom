@@ -1,4 +1,4 @@
-import { CartState, Product } from '../types';
+import { Product } from '../types';
 
 // function to format price in INR
 export const formatPrice = (price: number): string => {

@@ -17,7 +17,7 @@ import { validateExpiryDate } from '../validators';
 import { useNavigation } from '@react-navigation/native';
 import PaymentSuccess from '../components/PaymentSuccess';
 import { useDispatch } from 'react-redux';
-import { clearCart } from '../app/slices/cartSlice';
+import { clearCart } from '../store/slices/cartSlice';
 
 const PaymentGateway = () => {
   const [isConfettiVisible, setIsConfettiVisible] = useState(false);
@@ -58,7 +58,7 @@ const PaymentGateway = () => {
   };
 
   return isConfettiVisible ? (
-    <PaymentSuccess onPress={() => navigation.goBack()} />
+    <PaymentSuccess onPress={() => navigation.navigate('Listing' as never)} />
   ) : (
     <View style={styles.container}>
       <KeyboardAvoidingView
@@ -71,7 +71,7 @@ const PaymentGateway = () => {
           autoFocus={true}
           focus={focusCardNum}
           onFocus={() => setFocusCardNum(true)}
-          onBlur={(e) => {
+          onBlur={() => {
             setFocusCardNum(false);
           }}
           label='Card number'
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: '#f5f5f5',
     alignItems: 'center',
     justifyContent: 'center',
   },

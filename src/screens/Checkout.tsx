@@ -1,14 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
+
 import { formatPrice, getPricesForCart } from '../utils';
 import CustomButton from '../components/CustomButton';
-import { useDispatch, useSelector } from 'react-redux';
-import { cartItemsSelector } from '../app/selectors';
-import { removeItemFromCart } from '../app/slices/cartSlice';
+import { cartItemsSelector } from '../store/selectors';
+import { removeItemFromCart, updateHeader } from '../store/slices/cartSlice';
 import { Product } from '../types';
 import CartItem from '../components/CartItem';
-import EmptyCartComponent from '../components/EmptyCartComponent';
+import LottieAnimationComponent from '../components/LottieAnimationComponent';
+import emptyCart from '../../assets/Animations/empty-cart.json';
 
 const Checkout = () => {
   const cartItems = useSelector(cartItemsSelector);
@@ -20,6 +22,11 @@ const Checkout = () => {
 
   const handleRemove = (productToRemove: Product) => {
     dispatch(removeItemFromCart(productToRemove));
+  };
+
+  const handlePlaceOrder = () => {
+    dispatch(updateHeader(false));
+    navigation.navigate('PaymentGateway' as never);
   };
 
   return (
@@ -35,7 +42,11 @@ const Checkout = () => {
         ))}
       </ScrollView>
       {cartItems.length === 0 ? (
-        <EmptyCartComponent
+        <LottieAnimationComponent
+          canLoop={true}
+          btnText='Shop More'
+          source={emptyCart}
+          subtitleText='Your cart is Empty...'
           onPress={() => navigation.navigate('Listing' as never)}
         />
       ) : (
@@ -47,10 +58,7 @@ const Checkout = () => {
             GST (18%): {formatPrice(calculateGST())}
           </Text>
           <Text style={styles.summaryText}>Total Price: {totalPrice}</Text>
-          <CustomButton
-            title='Place Order'
-            onPress={() => navigation.navigate('PaymentGateway' as never)}
-          />
+          <CustomButton title='Place Order' onPress={handlePlaceOrder} />
         </View>
       )}
     </View>

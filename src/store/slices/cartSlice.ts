@@ -4,6 +4,7 @@ import { CartState } from '../../types';
 
 const initialState: CartState = {
   cartItems: [],
+  shouldShowHeader: true,
 };
 
 const cartSlice = createSlice({
@@ -24,9 +25,12 @@ const cartSlice = createSlice({
     clearCart: (state) => {
       state.cartItems = [];
     },
+    updateHeader: (state, action) => {
+      state.shouldShowHeader = action.payload;
+    },
   },
 });
 
-export const { addItemToCart, removeItemFromCart, clearCart } =
+export const { addItemToCart, removeItemFromCart, clearCart, updateHeader } =
   cartSlice.actions;
 export default cartSlice.reducer;

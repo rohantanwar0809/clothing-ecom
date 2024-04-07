@@ -1,11 +1,12 @@
-import { View, Text, Image, ScrollView } from 'react-native';
 import React from 'react';
+import { View, Text, Image, ScrollView } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
+
 import { formatPrice } from '../utils';
 import CustomButton from '../components/CustomButton';
-import { useDispatch, useSelector } from 'react-redux';
-import { cartItemsSelector, chosenItemSelector } from '../app/selectors';
-import { addItemToCart } from '../app/slices/cartSlice';
-import { useNavigation } from '@react-navigation/native';
+import { cartItemsSelector, chosenItemSelector } from '../store/selectors';
+import { addItemToCart, updateHeader } from '../store/slices/cartSlice';
 import QuantityInput from '../components/QuantityInput';
 
 const ProductDetails = () => {
@@ -20,6 +21,11 @@ const ProductDetails = () => {
 
   const handleAddToCart = () => {
     dispatch(addItemToCart(chosenItem)); // Dispatch action with the product object
+  };
+
+  const handleProceedToCheckout = () => {
+    dispatch(updateHeader(true));
+    navigation.navigate('Bag' as never);
   };
 
   const { title, price, description, category, image } = chosenItem;
@@ -65,7 +71,7 @@ const ProductDetails = () => {
             <CustomButton
               buttonSize='md'
               title='Proceed To Bag'
-              onPress={() => navigation.navigate('Bag' as never)}
+              onPress={handleProceedToCheckout}
             />
           </View>
         </View>

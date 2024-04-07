@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { SkeletonContainer } from 'react-native-skeleton-component';
+
 import SkeletonItemCard from './SkeletonItemCard';
 
 export default function SkeletonContainerComponent() {

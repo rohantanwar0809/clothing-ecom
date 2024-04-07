@@ -1,10 +1,11 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import Home from '../screens/Home';
 import Listing from '../screens/Listing';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Checkout from '../screens/Checkout';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import PaymentGateway from '../screens/PaymentGateway';
 
 const Tab = createBottomTabNavigator();
@@ -59,7 +60,7 @@ export function CheckoutStackScreen() {
       <CheckoutStack.Screen
         name='PaymentGateway'
         component={PaymentGateway}
-        options={{ headerShown: false }}
+        options={{ headerTitle: 'Payment', headerBackVisible: false }}
       />
     </CheckoutStack.Navigator>
   );

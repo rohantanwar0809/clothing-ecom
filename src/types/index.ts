@@ -1,3 +1,6 @@
+import store from '../store';
+
+// Common types
 interface Product {
   id: number;
   title: string;
@@ -25,6 +28,9 @@ interface ProductsState {
 
 interface CartState {
   cartItems: CartItemsProps[];
+  shouldShowHeader: boolean;
 }
 
-export { Product, ProductsState, CartState };
+type RootState = ReturnType<typeof store.getState>;
+
+export { Product, ProductsState, CartState, RootState };

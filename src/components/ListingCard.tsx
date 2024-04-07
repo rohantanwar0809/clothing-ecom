@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
 } from 'react-native';
+
 import { formatPrice } from '../utils';
 
 interface ListingCardProps extends TouchableOpacityProps {

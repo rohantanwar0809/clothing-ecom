@@ -1,7 +1,6 @@
-import { View } from 'react-native';
 import React from 'react';
+import { View, StyleSheet } from 'react-native';
 import { Skeleton } from 'react-native-skeleton-component';
-import { StyleSheet } from 'react-native';
 
 export default function SkeletonItemCard() {
   return (
