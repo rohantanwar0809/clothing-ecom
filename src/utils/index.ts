@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { Product } from '../types';
 
 // function to format price in INR
@@ -6,6 +7,11 @@ export const formatPrice = (price: number): string => {
     style: 'currency',
     currency: 'INR',
   }).format(price);
+};
+
+export const formatDate = (dateString: string) => {
+  const dateMoment = moment(dateString);
+  return dateMoment.format('MMMM Do, YYYY, HH:mm a');
 };
 
 export const getPricesForCart = (cartItems: Product[]) => {

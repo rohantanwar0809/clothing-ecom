@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   StyleSheet,
   KeyboardAvoidingView,
@@ -7,6 +8,8 @@ import {
   Text,
   TextInput,
 } from 'react-native';
+import uuid from 'react-native-uuid';
+import moment from 'moment';
 
 import {
   CardDateTextInput,
@@ -16,8 +19,10 @@ import CustomButton from '../components/CustomButton';
 import { validateExpiryDate } from '../validators';
 import { useNavigation } from '@react-navigation/native';
 import PaymentSuccess from '../components/PaymentSuccess';
-import { useDispatch } from 'react-redux';
 import { clearCart } from '../store/slices/cartSlice';
+import { OrderStatus } from '../types';
+import { cartItemsSelector } from '../store/selectors';
+import { addOrder } from '../store/slices/orderSlice';
 
 const PaymentGateway = () => {
   const [isConfettiVisible, setIsConfettiVisible] = useState(false);
@@ -31,6 +36,7 @@ const PaymentGateway = () => {
   const [CVVValue, setCVVValue] = useState('');
 
   const navigation = useNavigation();
+  const cartItems = useSelector(cartItemsSelector);
   const dispatch = useDispatch();
 
   const updateText = (cardNum: string) => {
@@ -55,10 +61,22 @@ const PaymentGateway = () => {
   const handlePayment = () => {
     dispatch(clearCart());
     setIsConfettiVisible(true);
+
+    const orderId = uuid.v4() as string;
+    const currentTimestamp = moment().format('YYYY-MM-DDTHH:mm:ss.SSS[+05:30]');
+    const order = {
+      id: orderId,
+      items: JSON.parse(JSON.stringify(cartItems)),
+      status: OrderStatus.PENDING,
+      date: currentTimestamp,
+    };
+
+    // Dispatch Add Order Action
+    dispatch(addOrder(order));
   };
 
   return isConfettiVisible ? (
-    <PaymentSuccess onPress={() => navigation.navigate('Listing' as never)} />
+    <PaymentSuccess onPress={() => navigation.navigate('Orders' as never)} />
   ) : (
     <View style={styles.container}>
       <KeyboardAvoidingView

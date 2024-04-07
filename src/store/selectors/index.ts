@@ -9,6 +9,9 @@ const chosenItemSelector = (state: RootState) => state.products.selectedProduct;
 const cartItemsSelector = (state: RootState) => state.cart.cartItems;
 const headerSelector = (state: RootState) => state.cart.shouldShowHeader;
 
+// ORDERS
+const ordersSelector = (state: RootState) => state.orders.orders;
+
 export {
   productsSelector,
   productsLoadingSelector,
@@ -16,4 +19,5 @@ export {
   chosenItemSelector,
   cartItemsSelector,
   headerSelector,
+  ordersSelector,
 };

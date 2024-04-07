@@ -15,6 +15,18 @@ interface Product {
   };
 }
 
+enum OrderStatus {
+  PENDING = 'pending',
+  SHIPPED = 'shipped',
+  COMPLETED = 'completed',
+}
+interface OrderType {
+  id: string; // Unique identifier for the order [TODO]
+  items: Product[];
+  status: OrderStatus;
+  date: string;
+}
+
 interface CartItemsProps extends Product {
   uniqueId: string;
 }
@@ -31,6 +43,18 @@ interface CartState {
   shouldShowHeader: boolean;
 }
 
+interface OrderState {
+  orders: OrderType[];
+}
+
 type RootState = ReturnType<typeof store.getState>;
 
-export { Product, ProductsState, CartState, RootState };
+export {
+  Product,
+  ProductsState,
+  CartState,
+  RootState,
+  OrderType,
+  OrderState,
+  OrderStatus,
+};

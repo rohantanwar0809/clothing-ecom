@@ -7,6 +7,7 @@ import Home from '../screens/Home';
 import Listing from '../screens/Listing';
 import Checkout from '../screens/Checkout';
 import PaymentGateway from '../screens/PaymentGateway';
+import Orders from '../screens/Orders';
 
 const Tab = createBottomTabNavigator();
 const CheckoutStack = createNativeStackNavigator();
@@ -14,7 +15,7 @@ const CheckoutStack = createNativeStackNavigator();
 function Routes() {
   return (
     <Tab.Navigator>
-      <Tab.Screen
+      {/* <Tab.Screen
         name='Home'
         component={Home}
         options={{
@@ -22,7 +23,7 @@ function Routes() {
             <MaterialCommunityIcons name='home' color={color} size={26} />
           ),
         }}
-      />
+      /> */}
       <Tab.Screen
         name='Listing'
         component={Listing}
@@ -42,6 +43,19 @@ function Routes() {
         options={{
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name='cart' color={color} size={26} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name='Orders'
+        component={Orders}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name='clipboard-check'
+              color={color}
+              size={26}
+            />
           ),
         }}
       />

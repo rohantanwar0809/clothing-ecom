@@ -4,7 +4,6 @@ import {
   StyleSheet,
   Text,
   TouchableOpacityProps,
-  View,
 } from 'react-native';
 import LottieView, { AnimationObject } from 'lottie-react-native';
 
@@ -33,7 +32,11 @@ export default function LottieAnimationComponent({
           loop={canLoop}
           style={styles.animationStyles}
         />
-        {subtitleText && <Text style={styles.textStyle}>{subtitleText}</Text>}
+        {subtitleText && (
+          <Text className='text-xl font-bold text-center mb-4 text-slate-400'>
+            {subtitleText}
+          </Text>
+        )}
       </SafeAreaView>
       <CustomButton className='m-10 mb-44' title={btnText} {...rest} />
     </>
@@ -51,11 +54,5 @@ const styles = StyleSheet.create({
     height: 400,
     justifyContent: 'center',
     alignContent: 'center',
-  },
-  textStyle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 15,
   },
 });

@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import uuid from 'react-native-uuid';
 import { CartState } from '../../types';
 
 const initialState: CartState = {
@@ -16,7 +15,7 @@ const cartSlice = createSlice({
     },
     removeItemFromCart: (state, action) => {
       const itemIndex = state.cartItems.findIndex(
-        (item) => item.id === action.payload.id,
+        (item) => item.uniqueId === action.payload.uniqueId,
       );
       if (itemIndex !== -1) {
         state.cartItems.splice(itemIndex, 1);

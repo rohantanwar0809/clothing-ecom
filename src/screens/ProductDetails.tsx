@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
+import uuid from 'react-native-uuid';
+import { cloneDeep } from 'lodash';
 
 import { formatPrice } from '../utils';
 import CustomButton from '../components/CustomButton';
@@ -20,7 +22,14 @@ const ProductDetails = () => {
   );
 
   const handleAddToCart = () => {
-    dispatch(addItemToCart(chosenItem)); // Dispatch action with the product object
+    const newCartItem = cloneDeep(chosenItem);
+    const cartItemId = uuid.v4() as string;
+    const finalObject = {
+      uniqueId: cartItemId,
+      ...newCartItem,
+    };
+    console.log('Hello', newCartItem, finalObject);
+    dispatch(addItemToCart(finalObject)); // Dispatch action with the product object
   };
 
   const handleProceedToCheckout = () => {
