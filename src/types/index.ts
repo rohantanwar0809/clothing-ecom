@@ -16,6 +16,16 @@ interface ProductsState {
   products: Product[];
   loading: boolean;
   error: string | null;
+  query?: string;
+  sortBy?: {
+    type: string;
+    order: string;
+  };
+}
+
+export enum SortType {
+  ASC = "ASC",
+  DESC = "DESC",
 }
 
 export { Product, ProductsState };

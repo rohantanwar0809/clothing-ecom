@@ -13,8 +13,8 @@ const ListingCard: React.FC<Product> = (props) => {
   const dispatch = useDispatch<AppDispatch>();
   return (
     <TouchableOpacity
-      className="rounded-lg w-[50%] p-2
-        bg-white shadow-md 
+      className="rounded-lg p-2
+        bg-white shadow-md w-full h-[280px]
       "
       onPress={() => {
         navigation.navigate("ProductDetails" as never);
@@ -28,7 +28,7 @@ const ListingCard: React.FC<Product> = (props) => {
         className="w-full h-48 rounded-lg"
         resizeMode="contain"
       />
-      <Text className="text-lg font-semibold">{title}</Text>
+      <Text className="text-md mt-2 font-semibold">{title}</Text>
       <Text className="text-sm text-gray-500">{formatPrice(price)}</Text>
     </TouchableOpacity>
   );
